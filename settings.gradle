@@ -1,1 +1,1 @@
-include ':app', ':guilib', ':aarapp'
+include ':app', ':guilib', ':aarapp', ':videoplayer'
