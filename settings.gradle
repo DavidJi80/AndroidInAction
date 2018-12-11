@@ -1,1 +1,1 @@
-include ':app', ':guilib', ':aarapp', ':videoplayer'
+include ':app', ':guilib', ':aarapp', ':videoplayer', ':okhttpapp'

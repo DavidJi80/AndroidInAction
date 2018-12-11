@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingConstraints">
+
+    <Button
+        android:id="@+id/btn_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="asynGet"
+        android:text="ASYN GET" />
+
+    <Button
+        android:id="@+id/btn_get_syn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btn_get"
+        android:layout_alignBottom="@+id/btn_get"
+        android:layout_toRightOf="@+id/btn_get"
+        android:onClick="synGet"
+        android:text="SYN GET" />
+
+    <Button
+        android:id="@+id/btn_post_key_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btn_get_syn"
+        android:layout_alignBottom="@+id/btn_get_syn"
+        android:layout_toRightOf="@+id/btn_get_syn"
+        android:onClick="postKeyValue"
+        android:text="POST" />
+
+    <Button
+        android:id="@+id/btn_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btn_post_key_value"
+        android:layout_alignBottom="@+id/btn_post_key_value"
+        android:layout_toRightOf="@+id/btn_post_key_value"
+        android:onClick="downloadImage"
+        android:text="IMG" />
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_get"
+        android:layout_alignLeft="@+id/btn_get"
+        android:text="" />
+
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_show"
+        android:layout_alignLeft="@+id/tv_show" />
+
+
+</RelativeLayout>
