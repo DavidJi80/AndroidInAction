@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.github.davidji80.contentresolver.R;
+import com.github.davidji80.contentresolver.adapter.listener.OnItemClickListener;
 import com.github.davidji80.contentresolver.model.AudioInfo;
 import com.github.davidji80.contentresolver.model.ImageInfo;
 import com.github.davidji80.contentresolver.model.MediaInfo;
@@ -23,6 +24,12 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.VH> {
     private List<MediaInfo> mDatas;
 
     private Context context;
+
+    private OnItemClickListener mItemClickListener;
+
+    public void setOnItemClickLitener(OnItemClickListener mItemClickListener) {
+        this.mItemClickListener = mItemClickListener;
+    }
 
 
     public MediaAdapter(List<MediaInfo> data, Context context) {
@@ -43,7 +50,14 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.VH> {
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new VH(LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_media, parent, false));
+        VH vh=new VH(LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_media, parent, false));
+        vh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mItemClickListener.onItemClick(view);
+            }
+        });
+        return vh;
     }
 
     /**
@@ -58,14 +72,17 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.VH> {
         if (mDatas.get(position) instanceof VideoInfo){
             VideoInfo videoInfo= (VideoInfo) mDatas.get(position);
             holder.tv.setText(videoInfo.filePath);
+            holder.itemView.setTag(mDatas.get(position).id);
             Glide.with(context).load(videoInfo.thumbnail).into(holder.ivShowImg);
         }else if (mDatas.get(position) instanceof ImageInfo){
             ImageInfo imageInfo= (ImageInfo) mDatas.get(position);
             holder.tv.setText(imageInfo.filePath);
+            holder.itemView.setTag(mDatas.get(position).id);
             Glide.with(context).load(imageInfo.thumbnail).into(holder.ivShowImg);
         }else if (mDatas.get(position) instanceof AudioInfo){
             AudioInfo audioInfo= (AudioInfo) mDatas.get(position);
             holder.tv.setText(audioInfo.filePath);
+            holder.itemView.setTag(mDatas.get(position).id);
         }
 
     }

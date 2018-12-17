@@ -150,7 +150,7 @@ public class HVItemDecoration extends RecyclerView.ItemDecoration {
         //获取item总数
         int childCount = parent.getAdapter().getItemCount();
         // 如果是最后一行，则不需要绘制底部
-        if (isLastRaw(parent, itemPosition, spanCount, childCount)) {
+        /*if (isLastRaw(parent, itemPosition, spanCount, childCount)) {
             outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
         }
         // 如果是最后一列，则不需要绘制右边
@@ -159,7 +159,9 @@ public class HVItemDecoration extends RecyclerView.ItemDecoration {
         } else {
             outRect.set(0, 0, mDivider.getIntrinsicWidth(),
                     mDivider.getIntrinsicHeight());
-        }
+        }*/
+        outRect.set(0, 0, mDivider.getIntrinsicWidth(),
+                mDivider.getIntrinsicHeight());
     }
 
 }

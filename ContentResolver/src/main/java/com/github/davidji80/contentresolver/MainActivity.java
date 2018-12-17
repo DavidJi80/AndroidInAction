@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.github.davidji80.contentresolver.adapter.MediaAdapter;
 import com.github.davidji80.contentresolver.adapter.MediaTypeAdapter;
+import com.github.davidji80.contentresolver.adapter.listener.OnItemClickListener;
 import com.github.davidji80.contentresolver.decoration.HVItemDecoration;
 import com.github.davidji80.contentresolver.model.MediaInfo;
 import com.github.davidji80.contentresolver.storage.MediaStorage;
@@ -107,9 +108,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void showVideoList() {
         List<MediaInfo> mData = mediaStorage.getVideoList();
-        RecyclerView mRecyclerView = findViewById(R.id.rv_1);
+        final RecyclerView mRecyclerView = findViewById(R.id.rv_1);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
-        mRecyclerView.setAdapter(new MediaAdapter(mData,MainActivity.this));
+        MediaAdapter mediaAdapter = new MediaAdapter(mData, MainActivity.this);
+        mediaAdapter.setOnItemClickLitener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view) {
+                int position = mRecyclerView.getChildAdapterPosition(view);
+                Toast.makeText(MainActivity.this, position + " long click",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        mRecyclerView.setAdapter(mediaAdapter);
         mRecyclerView.addItemDecoration(new HVItemDecoration(this));
     }
 
@@ -117,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         List<MediaInfo> mData = mediaStorage.getImageList();
         RecyclerView mRecyclerView = findViewById(R.id.rv_1);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
-        mRecyclerView.setAdapter(new MediaAdapter(mData,MainActivity.this));
+        mRecyclerView.setAdapter(new MediaAdapter(mData, MainActivity.this));
         mRecyclerView.addItemDecoration(new HVItemDecoration(this));
     }
 
@@ -125,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         List<MediaInfo> mData = mediaStorage.getAudioList();
         RecyclerView mRecyclerView = findViewById(R.id.rv_1);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
-        mRecyclerView.setAdapter(new MediaAdapter(mData,MainActivity.this));
+        mRecyclerView.setAdapter(new MediaAdapter(mData, MainActivity.this));
         mRecyclerView.addItemDecoration(new HVItemDecoration(this));
     }
 
