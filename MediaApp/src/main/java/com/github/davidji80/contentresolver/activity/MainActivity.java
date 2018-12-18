@@ -1,7 +1,8 @@
-package com.github.davidji80.contentresolver;
+package com.github.davidji80.contentresolver.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.davidji80.contentresolver.R;
 import com.github.davidji80.contentresolver.adapter.MediaAdapter;
 import com.github.davidji80.contentresolver.adapter.MediaTypeAdapter;
 import com.github.davidji80.contentresolver.adapter.listener.OnItemClickListener;
@@ -117,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
                 int position = mRecyclerView.getChildAdapterPosition(view);
                 Toast.makeText(MainActivity.this, position + " long click",
                         Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, VideoActivity.class);
+                startActivity(intent);
             }
         });
         mRecyclerView.setAdapter(mediaAdapter);
