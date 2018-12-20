@@ -13,6 +13,8 @@ import android.view.View;
 import com.github.davidji80.contentresolver.R;
 
 public class VideoSliceSeekBar extends View {
+    private String TAG = VideoSliceSeekBar.class.getSimpleName();
+
     private static final int PADDING_BOTTOM_TOP = 10;
     private static final int PADDING_LEFT_RIGHT = 15;
     private static final int BORDER_SIZE = 10;
@@ -91,20 +93,29 @@ public class VideoSliceSeekBar extends View {
     }
 
     @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        Log.e(TAG, "dispatchTouchEvent");
+        return super.dispatchTouchEvent(event);
+        //return false;
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "onTouchEvent");
         float x = event.getX();
         float y = event.getY();
-
+        boolean result=true;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.e("POINT", "X:" + x + ",Y:" + y);
-                Log.e("RECT", "LEFT:" + (touchLeft - DRAG_OFFSET) + ",Right:" + (touchLeft + DRAG_OFFSET));
+                //Log.e("POINT", "X:" + x + ",Y:" + y);
+                //Log.e("RECT", "LEFT:" + (touchLeft - DRAG_OFFSET) + ",Right:" + (touchLeft + DRAG_OFFSET));
                 if ((x > (touchLeft - DRAG_OFFSET)) && (x < (touchLeft + DRAG_OFFSET))) {
                     selectThumb = SelectThumb.SELECT_THUMB_LEFT;
                 } else if ((x > (touchRight - DRAG_OFFSET)) && (x < (touchRight + DRAG_OFFSET))) {
                     selectThumb = SelectThumb.SELECT_THUMB_RIGHT;
                 } else {
                     selectThumb = SelectThumb.NO_SELECT;
+                    result=false;
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -118,6 +129,8 @@ public class VideoSliceSeekBar extends View {
                         touchRight = (int) x;
                         invalidate();
                     }
+                }else {
+                    result=false;
                 }
                 break;
             case MotionEvent.ACTION_UP:
@@ -125,6 +138,6 @@ public class VideoSliceSeekBar extends View {
             default:
                 break;
         }
-        return true;
+        return result;
     }
 }

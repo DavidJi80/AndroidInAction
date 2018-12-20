@@ -18,11 +18,7 @@
         android:layout_alignParentBottom="true"
         android:background="@android:color/holo_green_light">
 
-        <com.github.davidji80.contentresolver.widget.VideoSliceSeekBar
-            android:layout_width="match_parent"
-            android:layout_height="70dp" />
-
-        <android.support.v7.widget.RecyclerView
+        <com.github.davidji80.contentresolver.widget.VideoFrameRecyclerView
             android:id="@+id/rv_video_frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,6 +28,14 @@
             android:layout_marginBottom="10dp"
             android:divider="#ffff0000"
             android:visibility="visible" />
+
+        <com.github.davidji80.contentresolver.widget.VideoSliceSeekBar
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+
+
+
+
 
 
     </FrameLayout>

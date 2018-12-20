@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
 
 import com.github.davidji80.contentresolver.R;
 import com.github.davidji80.contentresolver.adapter.VideoFrameAdapter;
@@ -44,8 +45,23 @@ public class VideoActivity extends AppCompatActivity {
                 } else if (newState == SCROLL_STATE_SETTLING) {
                     state = "SCROLL_STATE_SETTLING";
                 }
-                Log.e(TAG, "onViewRecycled:" + state);
+                //Log.e(TAG, "onViewRecycled:" + state);
             }
         });
     }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "dispatchTouchEvent" /*+ ev.toString()*/);
+        return super.dispatchTouchEvent(ev);
+        //return false;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "onTouchEvent" /*+ event.toString()*/);
+        return super.onTouchEvent(event);
+    }
+
+
 }

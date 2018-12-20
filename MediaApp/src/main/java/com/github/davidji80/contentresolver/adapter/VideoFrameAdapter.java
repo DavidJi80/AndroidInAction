@@ -176,7 +176,7 @@ public class VideoFrameAdapter extends RecyclerView.Adapter<VideoFrameAdapter.VH
         @Override
         protected void onProgressUpdate(Integer... values) {
             Integer value0 = values[0];
-            Log.e(TAG, "AsyncTask...:" + value0);
+            //Log.e(TAG, "AsyncTask...:" + value0);
             notifyDataSetChanged();
         }
 
