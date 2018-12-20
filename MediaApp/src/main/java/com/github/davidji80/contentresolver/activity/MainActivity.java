@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 showPopupWindow(view);
             }
         });
-
+        showVideoList();
     }
 
     private void showPopupWindow(View view) {
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showVideoList() {
-        List<MediaInfo> mData = mediaStorage.getVideoList();
+        final List<MediaInfo> mData = mediaStorage.getVideoList();
         final RecyclerView mRecyclerView = findViewById(R.id.rv_1);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
         MediaAdapter mediaAdapter = new MediaAdapter(mData, MainActivity.this);
@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, VideoActivity.class);
+                intent.putExtra("FILE_PATH", mData.get(position).filePath);
                 startActivity(intent);
             }
         });

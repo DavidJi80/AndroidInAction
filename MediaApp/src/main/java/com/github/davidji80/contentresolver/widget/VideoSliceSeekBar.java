@@ -14,7 +14,7 @@ import com.github.davidji80.contentresolver.R;
 
 public class VideoSliceSeekBar extends View {
     private static final int PADDING_BOTTOM_TOP = 10;
-    private static final int PADDING_LEFT_RIGHT = 5;
+    private static final int PADDING_LEFT_RIGHT = 15;
     private static final int BORDER_SIZE = 10;
     private static final int DRAG_OFFSET = 50;
     private static final int MIX_SELECT_SIZE=100;
@@ -84,8 +84,8 @@ public class VideoSliceSeekBar extends View {
         canvas.drawRect(drawLeft, PADDING_BOTTOM_TOP, drawRight + thumbSliceRight.getWidth(), PADDING_BOTTOM_TOP + BORDER_SIZE, mPaint);
         canvas.drawRect(drawLeft, viewHeight - PADDING_BOTTOM_TOP * 2, drawRight + thumbSliceRight.getWidth(), viewHeight - PADDING_BOTTOM_TOP * 2 + BORDER_SIZE, mPaint);
         int drawImgTop = (viewHeight - thumbSliceLeft.getHeight()) / 2;
-        canvas.drawRect(drawLeft, drawTop, drawLeft + thumbSliceLeft.getWidth(), viewHeight - PADDING_LEFT_RIGHT * 2, mPaint);
-        canvas.drawRect(drawRight, drawTop, drawRight + thumbSliceLeft.getWidth(), viewHeight - PADDING_LEFT_RIGHT * 2, mPaint);
+        canvas.drawRect(drawLeft, drawTop, drawLeft + thumbSliceLeft.getWidth(), viewHeight - PADDING_BOTTOM_TOP, mPaint);
+        canvas.drawRect(drawRight, drawTop, drawRight + thumbSliceLeft.getWidth(), viewHeight - PADDING_BOTTOM_TOP, mPaint);
         canvas.drawBitmap(thumbSliceLeft, drawLeft, drawImgTop, mPaint);
         canvas.drawBitmap(thumbSliceRight, drawRight, drawImgTop, mPaint);
     }
@@ -119,6 +119,7 @@ public class VideoSliceSeekBar extends View {
                         invalidate();
                     }
                 }
+                break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
             default:
