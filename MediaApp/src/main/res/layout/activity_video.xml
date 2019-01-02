@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     tools:ignore="MissingConstraints">
 
-    <ImageView
-        android:id="@+id/iv1"
+    <SurfaceView
+        android:id="@+id/sv_video"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible" />
+        android:layout_height="match_parent" />
 
 
     <FrameLayout
@@ -22,16 +21,16 @@
             android:id="@+id/rv_video_frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="3dp"
             android:divider="#ffff0000"
             android:visibility="visible" />
 
         <com.github.davidji80.contentresolver.widget.VideoSliceSeekBar
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="56dp" />
 
 
 

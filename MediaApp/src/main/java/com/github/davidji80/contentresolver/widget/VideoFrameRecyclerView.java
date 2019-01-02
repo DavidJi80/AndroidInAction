@@ -25,21 +25,21 @@ public class VideoFrameRecyclerView extends RecyclerView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.e(TAG, "dispatchTouchEvent");
+        //Log.e(TAG, "dispatchTouchEvent");
         return super.dispatchTouchEvent(ev);
         //return false;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
-        Log.e(TAG, "onInterceptTouchEvent");
+        //Log.e(TAG, "onInterceptTouchEvent");
         //return super.onInterceptTouchEvent(e);
         return false;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
-        Log.e(TAG, "onTouchEvent");
+        //Log.e(TAG, "onTouchEvent");
         return super.onTouchEvent(e);
     }
 }
