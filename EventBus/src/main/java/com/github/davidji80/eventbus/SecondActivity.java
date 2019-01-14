@@ -11,17 +11,33 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.Date;
 
 public class SecondActivity extends AppCompatActivity {
-    private Button mButton2;
+    private Button btn1, btn2, btn3;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        mButton2 = findViewById(R.id.btn2);
-        mButton2.setOnClickListener(new View.OnClickListener() {
+        btn1 = findViewById(R.id.btn1);
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().post(new MessageEvent("I am a post message,"+new Date()));
+                EventBus.getDefault().post(new MessageEvent("FROM 1" + new Date()));
+                finish();
+            }
+        });
+        btn2 = findViewById(R.id.btn2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new MessageEvent("FROM 2" + new Date()));
+                finish();
+            }
+        });
+        btn3 = findViewById(R.id.btn3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post("FROM 3" + new Date());
                 finish();
             }
         });

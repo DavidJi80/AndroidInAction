@@ -13,7 +13,9 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends AppCompatActivity {
     private Button mButton;
-    private TextView mText;
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +35,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        mText = findViewById(R.id.tv1);
-        mText.setText("I am init message!");
+        tv1 = findViewById(R.id.tv1);
+        tv1.setText("I am tv1");
+        tv2 = findViewById(R.id.tv2);
+        tv2.setText("I am tv2");
+        tv3 = findViewById(R.id.tv3);
+        tv3.setText("I am tv3");
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN,priority = 1)
+    public void messageEvent1(MessageEvent messageEvent) {
+        tv1.setText("MessageEvent1:"+messageEvent.getMessage());
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void Event(MessageEvent messageEvent) {
-        mText.setText(messageEvent.getMessage());
+    public void messageEvent2(MessageEvent messageEvent) {
+        tv2.setText("MessageEvent1:"+messageEvent.getMessage());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void stringEvent(String message) {
+        tv3.setText("String:"+message);
     }
 
 
