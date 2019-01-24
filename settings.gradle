@@ -1,1 +1,1 @@
-include ':app', ':guilib', ':aarApp', ':VideoPlayer', ':OKhttpApp', ':MediaApp', ':EventBus'
+include ':app', ':guilib', ':aarApp', ':VideoPlayer', ':OKhttpApp', ':MediaApp', ':EventBus', ':BlueTooth'
